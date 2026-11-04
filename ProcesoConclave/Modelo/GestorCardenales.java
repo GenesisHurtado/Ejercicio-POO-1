@@ -2,11 +2,11 @@ package Modelo;
 
 
 /**
- * Write a description of class Jornada here.
+ * Write a description of class GestorCardenales here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Jornada
+public class GestorCardenales
 {
 }
