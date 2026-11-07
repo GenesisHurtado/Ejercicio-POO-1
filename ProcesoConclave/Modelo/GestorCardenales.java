@@ -1,4 +1,5 @@
 package Modelo;
+import java.util.ArrayList;
 
 
 /**
@@ -9,4 +10,5 @@ package Modelo;
  */
 public class GestorCardenales
 {
+    private ArrayList <Cardenal> cardenales;
 }
