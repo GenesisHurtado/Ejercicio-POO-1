@@ -16,6 +16,10 @@ public class Cardenal
     private TipoCardenal tipoCardenal;
     
     
+    public Cardenal(){
+        
+    }
+    
      public Cardenal (String pais, String cedula, String nombre, int edad, TipoCardenal tipoCardenal) {
         this.pais = pais;
         this.cedula = cedula;
@@ -23,7 +27,7 @@ public class Cardenal
         this.edad = edad;
         this.tipoCardenal = tipoCardenal;
     }
-    // metodo debe ser menor de  80 años 
+   
 
 //Start GetterSetterExtension Source Code
 
@@ -79,6 +83,18 @@ public class Cardenal
 
 //End GetterSetterExtension Source Code
     
+    // METODOS OPERACIONALES
+    
+    public boolean esElector(){
+        
+       if (edad < 80 ){
+         return true;  
+       }else{
+           return false;
+       }
+       
+    }
+
     @Override
     public String toString() {
         return " Pais: " + pais + " \n" +

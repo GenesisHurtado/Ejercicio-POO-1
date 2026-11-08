@@ -1,5 +1,14 @@
 #BlueJ class context
-#Sat Nov 07 14:15:07 COT 2026
+#Sat Nov 07 15:33:28 COT 2026
 comment0.target=Voto
 comment0.text=\r\n Write a description of class Voto here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
-numComments=1
+comment1.target=Voto()
+comment2.params=cardenalVotado
+comment2.target=Voto(Cardenal)
+comment3.target=Cardenal getCardenalVotado()
+comment3.text=GET Method Propertie cardenalVotado
+comment4.params=cardenalVotado
+comment4.target=void setCardenalVotado(Cardenal)
+comment4.text=SET Method Propertie cardenalVotado
+comment5.target=java.lang.String toString()
+numComments=6

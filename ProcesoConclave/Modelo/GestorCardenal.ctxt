@@ -1,0 +1,10 @@
+#BlueJ class context
+#Sat Nov 07 19:04:55 COT 2026
+comment0.target=GestorCardenal
+comment0.text=\r\n Write a description of class GestorCardenal here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=GestorCardenal()
+comment2.params=cardenal
+comment2.target=void agregarCardenal(Cardenal)
+comment3.target=int contarElectores()
+comment4.target=java.util.ArrayList listarElectores()
+numComments=5

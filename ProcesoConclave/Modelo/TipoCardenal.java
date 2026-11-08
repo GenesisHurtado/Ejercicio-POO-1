@@ -9,5 +9,5 @@ package Modelo;
  */
 public enum TipoCardenal
 {
-    OBISPO,PREBISTERO,DIACONO
+    OBISPO,PRESBITERO,DIACONO
 }

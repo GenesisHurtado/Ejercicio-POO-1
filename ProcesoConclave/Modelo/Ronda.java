@@ -15,11 +15,18 @@ public class Ronda
     private int dia;
     private ArrayList<Voto> votos; 
     
-      public Ronda(int numero, String jornada, int dia, ArrayList<Voto> votos) {
+    
+    public Ronda(){
+        
+    }
+    
+    
+      public Ronda(int numero, String jornada, int dia) {
         this.numero = numero;
         this.jornada = jornada;
         this.dia = dia;
-        this.votos = votos;
+        this.votos = new ArrayList <>();
+        
     }
 
    
@@ -68,7 +75,38 @@ public class Ronda
     }//end method setVotos
 
 //End GetterSetterExtension Source Code
+      
+    //METODOS OPERACIONALES
+    public void registrarVoto ( Cardenal cardenalVotado){
+     
+    Voto v = new Voto(cardenalVotado);
+    votos.add(v);
+    }
 
+    
+    public int contarVotos(Cardenal cardenalVotado , String cedula){
+       
+        int contador=0;
+        
+        for (Voto v : votos  ){
+            if(v.getCardenalVotado().getCedula().equals(cedula)){
+                contador++;
+            }
+        }
+        
+        return contador;
+    }
+    
+    public boolean rondaCerrada(int cantidadElectores){
+      if(votos.size()==cantidadElectores){
+          return true;
+      }else{
+          return false;
+      }
+    }
+    
+    
+    
   @Override
     public String toString() {
         return "Ronda  Numero : " + numero + "\n"+
