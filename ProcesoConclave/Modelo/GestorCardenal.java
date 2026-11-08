@@ -49,7 +49,70 @@ public class GestorCardenal
     return electores;
   }
   
-  // RF  Votar
-  
+    // RF 2: Votar (el combo box y el botón Votar están en la vista)
+
+    public boolean votar(Cardenal cardenalVotado) {
+        if (papa != null || rondaCerrada()) {
+            return false;
+        }
+        rondaActual.registrarVoto(cardenalVotado);
+        return true;
+    }
+
+    // RF 3: Cierre de ronda, mayoría de 2/3 y elección del papa
+
+    public boolean rondaCerrada() {
+        return rondaActual.rondaCerrada(contarElectores());
+    }
+
+    public int calcularMayoria() {
+        int electores = contarElectores();
+        return (2 * electores + 2) / 3;
+    }
+
+    public Cardenal verificarPapa() {
+        if (!rondaCerrada()) {
+            return null;
+        }
+        int mayoria = calcularMayoria();
+        for (Cardenal c : cardenales) {
+            if (rondaActual.contarVotos(c.getCedula()) >= mayoria) {
+                papa = c;
+                return papa;
+            }
+        }
+        return null;
+    }
+
+    // RF 3: Siguiente ronda (2 rondas en la mañana y 2 en la tarde, 4 por día)
+
+    public boolean siguienteRonda() {
+        if (papa != null || !rondaCerrada()) {
+            return false;
+        }
+        int numero = rondaActual.getNumero() + 1;
+        int dia = (numero - 1) / 4 + 1;
+        String jornada;
+        if ((numero - 1) % 4 < 2) {
+            jornada = "Mañana";
+        } else {
+            jornada = "Tarde";
+        }
+        rondaActual = new Ronda(numero, jornada, dia);
+        return true;
+    }
+   
+    // METODOS PARA LA VISTA 
+     public ArrayList<Cardenal> getCardenales() {
+        return cardenales;
+    }
+
+    public Ronda getRondaActual() {
+        return rondaActual;
+    }
+
+    public Cardenal getPapa() {
+        return papa;
+    }
   
 } 

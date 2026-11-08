@@ -84,16 +84,13 @@ public class Ronda
     }
 
     
-    public int contarVotos(Cardenal cardenalVotado , String cedula){
-       
-        int contador=0;
-        
-        for (Voto v : votos  ){
-            if(v.getCardenalVotado().getCedula().equals(cedula)){
+     public int contarVotos(String cedula){
+        int contador = 0;
+        for (Voto v : votos) {
+            if (v.getCardenalVotado().getCedula().equals(cedula)) {
                 contador++;
             }
         }
-        
         return contador;
     }
     
@@ -103,7 +100,7 @@ public class Ronda
       }else{
           return false;
       }
-    }
+     }
     
     
     

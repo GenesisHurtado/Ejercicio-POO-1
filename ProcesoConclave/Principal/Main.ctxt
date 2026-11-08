@@ -1,5 +1,10 @@
 #BlueJ class context
-#Fri Nov 06 12:08:16 COT 2026
+#Sun Nov 08 18:23:21 COT 2026
 comment0.target=Main
 comment0.text=\r\n Write a description of class Main here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
-numComments=1
+comment1.params=args
+comment1.target=void main(java.lang.String[])
+comment2.params=g
+comment2.target=void cargarDatosPrueba(Modelo.GestorCardenal)
+comment2.text=Subconjunto reducido para validar\: 9 electores (<80 anios) y 3 no electores.
+numComments=3
