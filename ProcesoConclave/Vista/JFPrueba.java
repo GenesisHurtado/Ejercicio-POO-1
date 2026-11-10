@@ -1,0 +1,14 @@
+package Vista;
+
+
+/**
+ * Write a description of class JFPrueba here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class JFPrueba
+{
+    
+    
+}
