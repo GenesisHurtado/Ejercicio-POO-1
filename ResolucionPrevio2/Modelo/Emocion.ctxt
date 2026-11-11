@@ -1,0 +1,37 @@
+#BlueJ class context
+#Wed Nov 11 09:21:47 COT 2026
+comment0.target=Emocion
+comment0.text=\r\n Write a description of class Emocion here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.params=nombre intensidad tipo accion estado
+comment1.target=Emocion(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
+comment10.params=tipo
+comment10.target=void setTipo(java.lang.String)
+comment10.text=SET Method Propertie tipo
+comment11.target=java.lang.String getAccion()
+comment11.text=GET Method Propertie accion
+comment12.params=accion
+comment12.target=void setAccion(java.lang.String)
+comment12.text=SET Method Propertie accion
+comment13.target=java.lang.String getEstado()
+comment13.text=GET Method Propertie estado
+comment14.params=estado
+comment14.target=void setEstado(java.lang.String)
+comment14.text=SET Method Propertie estado
+comment2.target=java.lang.String toString()
+comment3.params=i
+comment3.target=void sumarIntensidad(int)
+comment4.params=i
+comment4.target=void restarIntensidad(int)
+comment5.target=java.lang.String getNombre()
+comment5.text=GET Method Propertie nombre
+comment6.params=nombre
+comment6.target=void setNombre(java.lang.String)
+comment6.text=SET Method Propertie nombre
+comment7.target=int getIntensidad()
+comment7.text=GET Method Propertie intensidad
+comment8.params=intensidad
+comment8.target=void setIntensidad(int)
+comment8.text=SET Method Propertie intensidad
+comment9.target=java.lang.String getTipo()
+comment9.text=GET Method Propertie tipo
+numComments=15
