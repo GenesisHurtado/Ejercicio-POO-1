@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Evento
 {
     private String nombre;
-    private String tipo ; // social, escolar,familiar
+    private String tipo ; 
     private Emocion emocion ;
     private int nivelCambio ;
     private String tipoCambio;

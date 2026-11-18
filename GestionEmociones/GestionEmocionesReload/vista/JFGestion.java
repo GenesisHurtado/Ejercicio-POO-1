@@ -183,12 +183,6 @@ public class JFGestion extends JFrame
         this.panelMedio = panelMedio;
     }//end method setPanelMedio
 
-//End GetterSetterExtension Source Code
-
-
-
-//Start GetterSetterExtension Source Code
-
     /**GET Method Propertie btnMasFuerte*/
     public JButton getBtnMasFuerte(){
         return this.btnMasFuerte;

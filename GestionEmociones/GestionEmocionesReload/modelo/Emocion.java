@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Emocion
 {
     private String nombre; 
-    private int intensidad ;// 1 a 10;
-    private String tipo ; // positivo o negativo
+    private int intensidad ;
+    private String tipo ; 
     private String accion ;
     private String estado ;
     
@@ -25,13 +25,11 @@ public class Emocion
        public void sumarIntensidad(int i){
            intensidad += i; 
        }
+       
        public void restarIntensidad(int i){
            intensidad -= i; 
        }
-    /*public String enlistar(){
-        String nombre = "Nombre: " + nombre + "\n" ; 
-        return nombre;
-     }*/
+ 
 //Start GetterSetterExtension Source Code
 
     /**GET Method Propertie nombre*/

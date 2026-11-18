@@ -64,11 +64,6 @@ public class JPEnlistar extends JPanel
         this.campoTexto = campoTexto;
     }//end method setCampoTexto
 
-//End GetterSetterExtension Source Code
-
-
-
-//Start GetterSetterExtension Source Code
 
     /**GET Method Propertie btnEnlistar*/
     public JButton getBtnEnlistar(){
