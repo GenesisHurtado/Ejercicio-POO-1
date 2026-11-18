@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=JPEnlistar
+comment1.params=
+comment1.target=JPEnlistar()
+comment2.params=
+comment2.target=javax.swing.JLabel\ getLblPregunta()
+comment2.text=GET\ Method\ Propertie\ lblPregunta
+comment3.params=lblPregunta
+comment3.target=void\ setLblPregunta(javax.swing.JLabel)
+comment3.text=SET\ Method\ Propertie\ lblPregunta
+comment4.params=
+comment4.target=javax.swing.JComboBox\ getCbEmocion()
+comment4.text=GET\ Method\ Propertie\ cbEmocion
+comment5.params=cbEmocion
+comment5.target=void\ setCbEmocion(javax.swing.JComboBox)
+comment5.text=SET\ Method\ Propertie\ cbEmocion
+comment6.params=
+comment6.target=javax.swing.JTextArea\ getCampoTexto()
+comment6.text=GET\ Method\ Propertie\ campoTexto
+comment7.params=campoTexto
+comment7.target=void\ setCampoTexto(javax.swing.JTextArea)
+comment7.text=SET\ Method\ Propertie\ campoTexto
+comment8.params=
+comment8.target=javax.swing.JButton\ getBtnEnlistar()
+comment8.text=GET\ Method\ Propertie\ btnEnlistar
+numComments=9

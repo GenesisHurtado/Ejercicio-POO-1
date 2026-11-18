@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Recuerdo
+comment1.params=emocion\ descripcion\ fecha\ evento
+comment1.target=Recuerdo(Emocion,\ java.lang.String,\ java.lang.String,\ Evento)
+comment2.params=
+comment2.target=java.lang.String\ enlistar()
+comment3.params=
+comment3.target=Emocion\ getEmocion()
+comment3.text=GET\ Method\ Propertie\ emocion
+comment4.params=emocion
+comment4.target=void\ setEmocion(Emocion)
+comment4.text=SET\ Method\ Propertie\ emocion
+comment5.params=
+comment5.target=java.lang.String\ getDescripcion()
+comment5.text=GET\ Method\ Propertie\ descripcion
+comment6.params=descripcion
+comment6.target=void\ setDescripcion(java.lang.String)
+comment6.text=SET\ Method\ Propertie\ descripcion
+comment7.params=
+comment7.target=java.lang.String\ getFecha()
+comment7.text=GET\ Method\ Propertie\ fecha
+comment8.params=fecha
+comment8.target=void\ setFecha(java.lang.String)
+comment8.text=SET\ Method\ Propertie\ fecha
+numComments=9

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=GestorEmocion
+comment1.params=
+comment1.target=GestorEmocion()
+comment10.params=
+comment10.target=java.lang.String\ enlistarUltimos5()
+comment2.params=e
+comment2.target=boolean\ agregarEmocion(Emocion)
+comment3.params=
+comment3.target=java.lang.String\ enlistarEmociones()
+comment4.params=e
+comment4.target=boolean\ agregarRecuerdo(Recuerdo)
+comment5.params=e
+comment5.target=boolean\ agregarEvento(Evento)
+comment6.params=
+comment6.target=double\ calcularPromedio()
+comment7.params=e
+comment7.target=java.lang.String\ enlistarRecuerdos(Emocion)
+comment8.params=e\ nuevaInt\ operacion
+comment8.target=void\ nuevaIntensidad(Emocion,\ int,\ java.lang.String)
+comment9.params=
+comment9.target=Emocion\ hallarEmocionMasIntensa()
+numComments=11

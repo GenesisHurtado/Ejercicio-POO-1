@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=JPResumen
+comment1.params=
+comment1.target=JPResumen()
+comment2.params=
+comment2.target=javax.swing.JTextArea\ getCampoResumen()
+comment2.text=GET\ Method\ Propertie\ campoResumen
+comment3.params=campoResumen
+comment3.target=void\ setCampoResumen(javax.swing.JTextArea)
+comment3.text=SET\ Method\ Propertie\ campoResumen
+numComments=4
