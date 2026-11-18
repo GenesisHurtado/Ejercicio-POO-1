@@ -1,0 +1,9 @@
+#BlueJ class context
+#Tue Nov 17 20:13:46 COT 2026
+comment0.target=JPOpciones
+comment0.text=\r\n Write a description of class JPOpciones here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=JPOpciones()
+comment2.target=javax.swing.JButton getBtnCalcular()
+comment3.target=javax.swing.JButton getBtnOpcion1()
+comment4.target=javax.swing.JButton getBtnOpcion2()
+numComments=5

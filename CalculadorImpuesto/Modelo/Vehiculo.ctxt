@@ -1,0 +1,12 @@
+#BlueJ class context
+#Tue Nov 17 20:06:15 COT 2026
+comment0.target=Vehiculo
+comment0.text=\r\n Write a description of class Vehiculo here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.params=marca linea modelo precio imagen
+comment1.target=Vehiculo(java.lang.String, java.lang.String, int, double, java.lang.String)
+comment2.target=java.lang.String getMarca()
+comment3.target=java.lang.String getLinea()
+comment4.target=int getModelo()
+comment5.target=double getPrecio()
+comment6.target=java.lang.String getImagen()
+numComments=7

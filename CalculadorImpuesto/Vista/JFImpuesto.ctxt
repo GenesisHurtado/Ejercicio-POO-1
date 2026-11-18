@@ -1,0 +1,12 @@
+#BlueJ class context
+#Tue Nov 17 20:14:47 COT 2026
+comment0.target=JFImpuesto
+comment0.text=\r\n Write a description of class JFImpuesto here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=JFImpuesto()
+comment2.target=JPImagen getPanelImagen()
+comment3.target=JPVehiculo getPanelVehiculo()
+comment4.target=JPBusqueda getPanelBusqueda()
+comment5.target=JPDescuento getPanelDescuento()
+comment6.target=JPOpciones getPanelOpciones()
+comment7.target=JPResultado getPanelResultado()
+numComments=8

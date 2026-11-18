@@ -1,0 +1,16 @@
+#BlueJ class context
+#Tue Nov 17 20:11:39 COT 2026
+comment0.target=JPVehiculo
+comment0.text=\r\n Write a description of class JPVehiculo here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=JPVehiculo()
+comment10.target=javax.swing.JButton getBtnUltimo()
+comment2.params=ruta
+comment2.target=void setFoto(java.lang.String)
+comment3.target=javax.swing.JTextField getTxtMarca()
+comment4.target=javax.swing.JTextField getTxtLinea()
+comment5.target=javax.swing.JTextField getTxtModelo()
+comment6.target=javax.swing.JTextField getTxtValor()
+comment7.target=javax.swing.JButton getBtnPrimero()
+comment8.target=javax.swing.JButton getBtnAnterior()
+comment9.target=javax.swing.JButton getBtnSiguiente()
+numComments=11

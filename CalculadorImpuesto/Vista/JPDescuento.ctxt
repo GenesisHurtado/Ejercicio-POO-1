@@ -1,0 +1,9 @@
+#BlueJ class context
+#Tue Nov 17 20:13:08 COT 2026
+comment0.target=JPDescuento
+comment0.text=\r\n Write a description of class JPDescuento here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=JPDescuento()
+comment2.target=javax.swing.JCheckBox getChkProntoPago()
+comment3.target=javax.swing.JCheckBox getChkTraslado()
+comment4.target=javax.swing.JCheckBox getChkServicioPublico()
+numComments=5

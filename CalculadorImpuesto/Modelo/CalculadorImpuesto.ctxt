@@ -1,0 +1,17 @@
+#BlueJ class context
+#Tue Nov 17 20:07:19 COT 2026
+comment0.target=CalculadorImpuesto
+comment0.text=\r\n Write a description of class CalculadorImpuesto here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=CalculadorImpuesto()
+comment2.params=r
+comment2.target=void agregarRango(RangoImpuesto)
+comment3.params=indice
+comment3.target=void eliminarRango(int)
+comment4.params=valor
+comment4.target=RangoImpuesto buscarRango(double)
+comment5.params=v
+comment5.target=double calcularImpuestoBase(Vehiculo)
+comment6.params=impuesto prontoPago servicioPublico traslado
+comment6.target=double calcularImpuestoFinal(double, boolean, boolean, boolean)
+comment7.target=java.util.ArrayList getRangos()
+numComments=8

@@ -1,0 +1,11 @@
+#BlueJ class context
+#Tue Nov 17 20:12:27 COT 2026
+comment0.target=JPBusqueda
+comment0.text=\r\n Write a description of class JPBusqueda here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.target=JPBusqueda()
+comment2.target=javax.swing.JTextField getTxtLinea()
+comment3.target=javax.swing.JTextField getTxtMarca()
+comment4.target=javax.swing.JButton getBtnBuscarLinea()
+comment5.target=javax.swing.JButton getBtnBuscarMarca()
+comment6.target=javax.swing.JButton getBtnMasCaro()
+numComments=7

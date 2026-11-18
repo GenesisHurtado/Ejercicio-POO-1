@@ -1,0 +1,18 @@
+#BlueJ class context
+#Tue Nov 17 20:06:43 COT 2026
+comment0.target=RangoImpuesto
+comment0.text=\r\n Write a description of class RangoImpuesto here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
+comment1.params=limiteInferior limiteSuperior porcentaje
+comment1.target=RangoImpuesto(double, double, double)
+comment2.params=valor
+comment2.target=boolean incluye(double)
+comment3.target=double getLimiteInferior()
+comment4.params=limiteInferior
+comment4.target=void setLimiteInferior(double)
+comment5.target=double getLimiteSuperior()
+comment6.params=limiteSuperior
+comment6.target=void setLimiteSuperior(double)
+comment7.target=double getPorcentaje()
+comment8.params=porcentaje
+comment8.target=void setPorcentaje(double)
+numComments=9
