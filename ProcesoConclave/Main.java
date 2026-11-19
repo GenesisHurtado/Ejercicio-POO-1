@@ -1,4 +1,3 @@
-package Principal;
 import Modelo.*;
 import Vista.JFGestorCardenales;
 
@@ -8,8 +7,8 @@ import Vista.JFGestorCardenales;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Main{
-    
+public class Main
+{
      public static void main(String[] args) {
         GestorCardenal gestor = new GestorCardenal();
         cargarDatosPrueba(gestor);
