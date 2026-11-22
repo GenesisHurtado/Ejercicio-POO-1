@@ -1,19 +1,25 @@
 #BlueJ class context
-#Sun Nov 08 18:23:09 COT 2026
+#Sun Nov 22 08:46:38 COT 2026
 comment0.target=GestorCardenal
 comment0.text=\r\n Write a description of class GestorCardenal here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
 comment1.target=GestorCardenal()
-comment10.target=java.util.ArrayList getCardenales()
-comment11.target=Ronda getRondaActual()
-comment12.target=Cardenal getPapa()
-comment2.params=cardenal
-comment2.target=void agregarCardenal(Cardenal)
-comment3.target=int contarElectores()
-comment4.target=java.util.ArrayList listarElectores()
-comment5.params=cardenalVotado
-comment5.target=boolean votar(Cardenal)
-comment6.target=boolean rondaCerrada()
-comment7.target=int calcularMayoria()
-comment8.target=Cardenal verificarPapa()
-comment9.target=boolean siguienteRonda()
-numComments=13
+comment10.target=int contarVotos()
+comment11.target=boolean rondaCerrada()
+comment12.target=int calcularMayoria()
+comment13.target=Cardenal verificarPapa()
+comment14.target=java.lang.String enlistarPapa()
+comment15.target=java.lang.String enlistarResultados()
+comment16.target=java.lang.String describirRonda()
+comment17.target=int numeroRonda()
+comment18.target=boolean siguienteRonda()
+comment2.target=java.util.ArrayList getCardenales()
+comment3.target=Ronda getRondaActual()
+comment4.target=Cardenal getPapa()
+comment5.params=c
+comment5.target=boolean agregarCardenal(Cardenal)
+comment6.target=int contarElectores()
+comment7.target=int contarNoElectores()
+comment8.target=java.lang.String enlistarElectores()
+comment9.params=cardenalVotado
+comment9.target=boolean votar(Cardenal)
+numComments=19

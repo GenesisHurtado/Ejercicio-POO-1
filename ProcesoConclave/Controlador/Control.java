@@ -13,103 +13,87 @@ public class Control
 {
      private JFConclave vistaGestor;
     private GestorCardenal modeloGestor;
-    private JPVotacion panelVotacion;
-    private JPElectores panelElectores;
 
     public Control(GestorCardenal modeloGestor, JFConclave vistaGestor){
         this.vistaGestor = vistaGestor;
         this.modeloGestor = modeloGestor;
-        panelVotacion = new JPVotacion();
-        panelElectores = new JPElectores();
 
-     for(Cardenal c : modeloGestor.getCardenales()){
-            panelVotacion.getCbCardenales().addItem(c);
-        }
-        panelVotacion.getCampoTexto().setText("Electores: " + modeloGestor.contarElectores() +
-                                              "\nVotos para la mayoria (2/3): " + modeloGestor.calcularMayoria() +
-                                              "\n" + modeloGestor.getRondaActual() +
-                                              "\nSeleccione un cardenal y presione Votar.");
-        vistaGestor.reemplazarPanelCentral(panelVotacion);
+        // Se crean los cardenales: 9 electores y 3 no electores (mayores de 80 anios)
+        agregar(new Cardenal("Italia",    "1001", "Pietro Parolin",    70, TipoCardenal.OBISPO));
+        agregar(new Cardenal("Filipinas", "1002", "Luis Tagle",        68, TipoCardenal.OBISPO));
+        agregar(new Cardenal("Hungria",   "1003", "Peter Erdo",        73, TipoCardenal.PRESBITERO));
+        agregar(new Cardenal("Ghana",     "1004", "Peter Turkson",     76, TipoCardenal.OBISPO));
+        agregar(new Cardenal("Colombia",  "1005", "Cardenal Colombia", 65, TipoCardenal.PRESBITERO));
+        agregar(new Cardenal("Brasil",    "1006", "Cardenal Brasil",   60, TipoCardenal.DIACONO));
+        agregar(new Cardenal("Espana",    "1007", "Cardenal Espana",   72, TipoCardenal.OBISPO));
+        agregar(new Cardenal("Francia",   "1008", "Cardenal Francia",  58, TipoCardenal.PRESBITERO));
+        agregar(new Cardenal("Mexico",    "1009", "Cardenal Mexico",   66, TipoCardenal.DIACONO));
+        agregar(new Cardenal("Portugal",  "1010", "Cardenal Portugal", 85, TipoCardenal.OBISPO));
+        agregar(new Cardenal("Alemania",  "1011", "Cardenal Alemania", 82, TipoCardenal.PRESBITERO));
+        agregar(new Cardenal("Polonia",   "1012", "Cardenal Polonia",  90, TipoCardenal.DIACONO));
 
-        vistaGestor.getBtnVotacion().addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                vistaGestor.reemplazarPanelCentral(panelVotacion);
-            }
-        });
-
-        vistaGestor.getBtnElectores().addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                vistaGestor.reemplazarPanelCentral(panelElectores);
-            }
-        });
-        
-        // RF 1: listado de electores
-        panelElectores.getBtnEnlistar().addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                String lista = modeloGestor.enlistarElectores();
-                panelElectores.getCampoTexto().setText("Electores: " + modeloGestor.contarElectores() +
-                                                       " | No electores: " + modeloGestor.contarNoElectores() +
-                                                       "\n\n" + lista);
-            }
-        });
+        // RF 1: listado de electores al iniciar
+        vistaGestor.getCampoTexto().setText("Electores: " + modeloGestor.contarElectores() +
+            " | No electores: " + modeloGestor.contarNoElectores() +
+            "\nVotos para la mayoria (2/3): " + modeloGestor.calcularMayoria() +
+            "\n\nListado de electores:\n" + modeloGestor.enlistarElectores() +
+            "\n" + modeloGestor.describirRonda() +
+            "\nSeleccione un cardenal y presione Votar.");
+        vistaGestor.getCampoTexto().setCaretPosition(0);
 
         // RF 2 y 3: votar y cierre de ronda
-        panelVotacion.getBtnVotar().addActionListener(new ActionListener(){
+        vistaGestor.getBtnVotar().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                Cardenal votado = (Cardenal) panelVotacion.getCbCardenales().getSelectedItem();
+                Cardenal votado = (Cardenal) vistaGestor.getCbCardenales().getSelectedItem();
                 if(votado == null){
-                    panelVotacion.getCampoTexto().setText("Seleccione un cardenal");
+                    vistaGestor.getCampoTexto().setText("Seleccione un cardenal");
                     return;
                 }
                 if(modeloGestor.votar(votado)){
-                    panelVotacion.getCampoTexto().setText("Voto registrado (" +
-                        modeloGestor.getRondaActual().cantidadVotos() + " de " +
+                    vistaGestor.getCampoTexto().setText("Voto registrado (" +
+                        modeloGestor.contarVotos() + " de " +
                         modeloGestor.contarElectores() + ")");
                 }
                 if(modeloGestor.rondaCerrada()){
-                    panelVotacion.getBtnVotar().setEnabled(false);
-                    String texto = modeloGestor.getRondaActual() + "\n" + modeloGestor.enlistarResultados();
-                    Cardenal papa = modeloGestor.verificarPapa();
-                    if(papa != null){
-                        Ronda r = modeloGestor.getRondaActual();
-                        texto += "\nHay nuevo papa\n" +
-                                 "Ronda: " + r.getNumero() + "\n" +
-                                 "Jornada: " + r.getJornada() + "\n" +
-                                 "Nombre: " + papa.getNombre() + "\n" +
-                                 "Pais: " + papa.getPais() + "\n" +
-                                 "Edad: " + papa.getEdad();
-                        panelVotacion.getBtnSiguienteRonda().setEnabled(false);
+                    vistaGestor.getBtnVotar().setEnabled(false);
+                    String resultado = modeloGestor.describirRonda() + "\n" + modeloGestor.enlistarResultados();
+                    if(modeloGestor.verificarPapa() != null){
+                        resultado += "\nHay nuevo papa\n" + modeloGestor.enlistarPapa();
+                        vistaGestor.getBtnSiguienteRonda().setEnabled(false);
                     }else{
-                        texto += "\nNo hay papa aun";
-                        panelVotacion.getBtnSiguienteRonda().setEnabled(true);
+                        resultado += "\nNo hay papa aun";
+                        vistaGestor.getBtnSiguienteRonda().setEnabled(true);
                     }
-                    panelVotacion.getCampoTexto().setText(texto);
+                    vistaGestor.getCampoTexto().setText(resultado);
                 }
             }
         });
 
-        panelVotacion.getBtnMostrarResultados().addActionListener(new ActionListener(){
+        vistaGestor.getBtnMostrarResultados().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                panelVotacion.getCampoTexto().setText(modeloGestor.getRondaActual() +
-                    "\nVotos registrados: " + modeloGestor.getRondaActual().cantidadVotos() +
+                vistaGestor.getCampoTexto().setText(modeloGestor.describirRonda() +
+                    "\nVotos registrados: " + modeloGestor.contarVotos() +
                     " de " + modeloGestor.contarElectores() +
                     "\n" + modeloGestor.enlistarResultados());
             }
         });
 
-        panelVotacion.getBtnSiguienteRonda().addActionListener(new ActionListener(){
+        vistaGestor.getBtnSiguienteRonda().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 if(modeloGestor.siguienteRonda()){
-                    panelVotacion.getTxtNumRonda().setText("" + modeloGestor.getRondaActual().getNumero());
-                    panelVotacion.getBtnVotar().setEnabled(true);
-                    panelVotacion.getBtnSiguienteRonda().setEnabled(false);
-                    panelVotacion.getCampoTexto().setText(modeloGestor.getRondaActual() +
+                    vistaGestor.getTxtNumRonda().setText("" + modeloGestor.numeroRonda());
+                    vistaGestor.getBtnVotar().setEnabled(true);
+                    vistaGestor.getBtnSiguienteRonda().setEnabled(false);
+                    vistaGestor.getCampoTexto().setText(modeloGestor.describirRonda() +
                         "\nNueva ronda. Seleccione un cardenal y presione Votar.");
                 }
             }
         });
     }
-}
 
-        
-    
+    private void agregar(Cardenal c){
+        if(modeloGestor.agregarCardenal(c)){
+            vistaGestor.getCbCardenales().addItem(c);
+        }
+    }
+}

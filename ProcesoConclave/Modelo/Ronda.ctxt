@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Nov 08 18:22:59 COT 2026
+#Sun Nov 22 08:23:47 COT 2026
 comment0.target=Ronda
 comment0.text=\r\n Write a description of class Ronda here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
 comment1.target=Ronda()
@@ -10,9 +10,10 @@ comment11.params=cardenalVotado
 comment11.target=void registrarVoto(Cardenal)
 comment12.params=cedula
 comment12.target=int contarVotos(java.lang.String)
-comment13.params=cantidadElectores
-comment13.target=boolean rondaCerrada(int)
-comment14.target=java.lang.String toString()
+comment13.target=int cantidadVotos()
+comment14.params=cantidadElectores
+comment14.target=boolean rondaCerrada(int)
+comment15.target=java.lang.String toString()
 comment2.params=numero jornada dia
 comment2.target=Ronda(int, java.lang.String, int)
 comment3.target=int getNumero()
@@ -32,4 +33,4 @@ comment8.target=void setDia(int)
 comment8.text=SET Method Propertie dia
 comment9.target=java.util.ArrayList getVotos()
 comment9.text=GET Method Propertie votos
-numComments=15
+numComments=16

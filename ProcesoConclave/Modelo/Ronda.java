@@ -32,7 +32,7 @@ public class Ronda
    
     
 
-//Start GetterSetterExtension Source Code
+    //Start GetterSetterExtension Source Code
 
     /**GET Method Propertie numero*/
     public int getNumero(){
@@ -74,33 +74,32 @@ public class Ronda
         this.votos = votos;
     }//end method setVotos
 
-//End GetterSetterExtension Source Code
+   //End GetterSetterExtension Source Code
       
-    //METODOS OPERACIONALES
-    public void registrarVoto ( Cardenal cardenalVotado){
-     
-    Voto v = new Voto(cardenalVotado);
-    votos.add(v);
+    // METODOS OPERACIONALES
+
+    public void registrarVoto(Cardenal cardenalVotado){
+        Voto v = new Voto(cardenalVotado);
+        votos.add(v);
     }
 
-    
-     public int contarVotos(String cedula){
+    public int contarVotos(String cedula){
         int contador = 0;
-        for (Voto v : votos) {
-            if (v.getCardenalVotado().getCedula().equals(cedula)) {
+        for(Voto v : votos){
+            if(v.getCardenalVotado().getCedula().equals(cedula)){
                 contador++;
             }
         }
         return contador;
     }
-    
-    public boolean rondaCerrada(int cantidadElectores){
-      if(votos.size()==cantidadElectores){
-          return true;
-      }else{
-          return false;
-      }
-     }
+
+    public int cantidadVotos(){
+        return votos.size();
+    }
+
+     public boolean rondaCerrada(int cantidadElectores){
+        return votos.size() >= cantidadElectores;
+    }
     
     
     

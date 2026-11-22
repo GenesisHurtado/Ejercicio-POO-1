@@ -1,5 +1,5 @@
 #BlueJ class context
-#Sun Nov 08 18:23:03 COT 2026
+#Sun Nov 22 08:20:52 COT 2026
 comment0.target=Cardenal
 comment0.text=\r\n Write a description of class Cardenal here.\r\n \r\n @author (your name) \r\n @version (a version number or a date)\r\n
 comment1.target=Cardenal()
@@ -11,8 +11,15 @@ comment11.text=GET Method Propertie tipoCardenal
 comment12.params=tipoCardenal
 comment12.target=void setTipoCardenal(TipoCardenal)
 comment12.text=SET Method Propertie tipoCardenal
-comment13.target=boolean esElector()
-comment14.target=java.lang.String toString()
+comment13.target=boolean isPresente()
+comment13.text=GET Method Propertie presente
+comment14.params=presente
+comment14.target=void setPresente(boolean)
+comment14.text=SET Method Propertie presente
+comment15.target=boolean esElector()
+comment16.target=boolean puedeVotar()
+comment17.target=java.lang.String enlistar()
+comment18.target=java.lang.String toString()
 comment2.params=pais cedula nombre edad tipoCardenal
 comment2.target=Cardenal(java.lang.String, java.lang.String, java.lang.String, int, TipoCardenal)
 comment3.target=java.lang.String getPais()
@@ -32,4 +39,4 @@ comment8.target=void setNombre(java.lang.String)
 comment8.text=SET Method Propertie nombre
 comment9.target=int getEdad()
 comment9.text=GET Method Propertie edad
-numComments=15
+numComments=19

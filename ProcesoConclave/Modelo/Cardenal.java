@@ -9,27 +9,28 @@ package Modelo;
  */
 public class Cardenal
 {
-    private String  pais;
+     private String pais;
     private String cedula;
     private String nombre;
     private int edad;
     private TipoCardenal tipoCardenal;
+    private boolean presente; 
     
     
     public Cardenal(){
         
-    }
+     }
     
-     public Cardenal (String pais, String cedula, String nombre, int edad, TipoCardenal tipoCardenal) {
+     public Cardenal(String pais, String cedula, String nombre, int edad, TipoCardenal tipoCardenal){
         this.pais = pais;
         this.cedula = cedula;
         this.nombre = nombre;
         this.edad = edad;
         this.tipoCardenal = tipoCardenal;
+        this.presente = true;
     }
    
-
-//Start GetterSetterExtension Source Code
+    //Start GetterSetterExtension Source Code
 
     /**GET Method Propertie pais*/
     public String getPais(){
@@ -81,8 +82,17 @@ public class Cardenal
         this.tipoCardenal = tipoCardenal;
     }//end method setTipoCardenal
 
-//End GetterSetterExtension Source Code
-    
+    /**GET Method Propertie presente*/
+    public boolean isPresente(){
+        return this.presente;
+    }//end method isPresente
+
+    /**SET Method Propertie presente*/
+    public void setPresente(boolean presente){
+        this.presente = presente;
+    }//end method setPresente
+
+   //End GetterSetterExtension Source Code
     // METODOS OPERACIONALES
     
     public boolean esElector(){
@@ -93,6 +103,21 @@ public class Cardenal
            return false;
        }
        
+    }
+    
+    
+   
+    public boolean puedeVotar(){
+        return esElector() && presente;
+    }
+
+    public String enlistar(){
+        String r = "Cedula: " + cedula + "\n" +
+                   "Nombre: " + nombre + "\n" +
+                   "Pais: " + pais + "\n" +
+                   "Edad: " + edad + "\n" +
+                   "Tipo: " + tipoCardenal + "\n";
+        return r;
     }
 
     @Override
