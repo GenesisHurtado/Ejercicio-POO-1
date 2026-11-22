@@ -1,19 +1,13 @@
-import Vista.JFRegistroPersona;
-/**
- * Write a description of class Main here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import Modelo.*;
+import Vista.*;
+import Controlador.*;
+
 public class Main
 {
-       public static void main(String[] args)
-    {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new JFRegistroPersona();
-            }
-        });
+    public static void main(String[] args){
+        GestorPersona modelo = new GestorPersona();
+        JFRegistroPersona vista = new JFRegistroPersona();
+        Control control = new Control(modelo, vista);
+        vista.setVisible(true);
     }
 }

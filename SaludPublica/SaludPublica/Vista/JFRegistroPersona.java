@@ -1,48 +1,47 @@
 package Vista;
 
 import Modelo.*;
-import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 
 public class JFRegistroPersona extends JFrame
 {
-    public JComboBox<TipoDocumento> cbTipoDocumento;
-    public JTextField txtDocumento;
-    public JTextField txtNombre;
-    public JTextField txtApellido;
-    public JTextField txtDireccion;
-    public JTextField txtTelefono;
-    public JTextField txtEdad;
-    public JTextField txtEstrato;
-    public JTextField txtEstadoCivil;
-    public JComboBox<String> cbTipoPersona;
-    public JTextField txtInstitucion;
-    public JTextField txtEspecialidad;
-    public JComboBox<String> cbNivel;
-    public JCheckBox chkCabezaHogar;
+    private JComboBox<TipoDocumento> cbTipoDocumento;
+    private JTextField txtDocumento;
+    private JTextField txtNombre;
+    private JTextField txtApellido;
+    private JTextField txtDireccion;
+    private JTextField txtTelefono;
+    private JTextField txtEdad;
+    private JTextField txtEstrato;
+    private JTextField txtEstadoCivil;
+    private JComboBox<String> cbTipoPersona;
+    private JTextField txtInstitucion;
+    private JTextField txtEspecialidad;
+    private JComboBox<String> cbNivel;
+    private JCheckBox chkCabezaHogar;
 
-    private ArrayList<Persona> personas = new ArrayList<Persona>();
+    private JButton btnGuardar;
+    private JButton btnLimpiar;
+    private JButton btnBuscar;
 
-    public JButton btnGuardar;
-    public JButton btnLimpiar;
-    public JButton btnBuscar;
+    private JPanel panelSalud;
+    private JTextField txtElementoBioseguridad;
+    private JTextField txtMedicinaSalud;
 
-    public JPanel panelSalud;
-    public JTextField txtElementoBioseguridad;
-    public JTextField txtMedicinaSalud;
+    private JPanel panelDocente;
+    private JTextField txtImplementosTecnologicos;
+    private JTextField txtInternetEnergia;
 
-    public JPanel panelDocente;
-    public JTextField txtImplementosTecnologicos;
-    public JTextField txtInternetEnergia;
+    private JPanel panelIndependiente;
+    private JTextField txtMedicinaIndependiente;
+    private JTextField txtCanastaFamiliar;
 
-    public JPanel panelIndependiente;
-    public JTextField txtMedicinaIndependiente;
-    public JTextField txtCanastaFamiliar;
+    private JTextArea campoTexto;
 
     public JFRegistroPersona() {
         setTitle("Gestión de Distribución de Bonos");
-        setSize(950, 650);
+        setSize(950, 760);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(15, 15));
@@ -50,13 +49,7 @@ public class JFRegistroPersona extends JFrame
         crearPanelIzquierdo();
         crearPanelDerecho();
 
-        cbTipoPersona.addActionListener(e -> habilitarSegunTipo());
-        btnGuardar.addActionListener(e -> guardar());
-        btnBuscar.addActionListener(e -> buscarYMostrar());
-        btnLimpiar.addActionListener(e -> limpiar());
-        limpiar();
-
-        setVisible(true);
+        crearCampoTexto();
     }
 
     private void crearPanelIzquierdo() {
@@ -198,216 +191,41 @@ public class JFRegistroPersona extends JFrame
         return panelIndependiente;
     }
 
-    public void habilitarSegunTipo() {
-        String tipo = (String) cbTipoPersona.getSelectedItem();
-        boolean salud = "Salud".equals(tipo);
-        boolean docente = "Docente".equals(tipo);
-        boolean independiente = "Independiente".equals(tipo);
-
-        txtInstitucion.setEnabled(salud || docente);
-        txtEspecialidad.setEnabled(salud);
-        cbNivel.setEnabled(docente);
-
-        if (!(salud || docente)) txtInstitucion.setText("");
-        if (!salud) txtEspecialidad.setText("");
-        if (!docente) cbNivel.setSelectedIndex(-1);
-
-        habilitarPanel(panelSalud, salud);
-        habilitarPanel(panelDocente, docente);
-        habilitarPanel(panelIndependiente, independiente);
+    private void crearCampoTexto() {
+        campoTexto = new JTextArea(5, 40);
+        campoTexto.setEditable(false);
+        campoTexto.setLineWrap(true);
+        campoTexto.setWrapStyleWord(true);
+        JScrollPane scroll = new JScrollPane(campoTexto);
+        scroll.setBorder(BorderFactory.createTitledBorder("Mensajes"));
+        add(scroll, BorderLayout.SOUTH);
     }
 
-    private void habilitarPanel(JPanel panel, boolean habilitar) {
-        panel.setEnabled(habilitar);
-        for (Component c : panel.getComponents()) {
-            c.setEnabled(habilitar);
-            if (!habilitar && c instanceof JTextField) {
-                ((JTextField) c).setText("");
-            }
-        }
-    }
-
-    public void limpiar() {
-        cbTipoDocumento.setSelectedIndex(-1);
-        txtDocumento.setText("");
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtDireccion.setText("");
-        txtTelefono.setText("");
-        txtEdad.setText("");
-        txtEstrato.setText("");
-        txtEstadoCivil.setText("");
-        chkCabezaHogar.setSelected(false);
-        cbTipoPersona.setSelectedIndex(-1);
-        habilitarSegunTipo();
-    }
-
-    public Persona buscar(String documento) {
-        for (Persona p : personas) {
-            if (p.getNumDocumento().equals(documento)) {
-                return p;
-            }
-        }
-        return null;
-    }
-
-    private void guardar() {
-        try {
-            Persona p = construirPersona();
-            if (p == null) return;
-
-            if (!p.distribucionValida()) {
-                mensaje("La distribución ($" + formato(p.getTotalGastado())
-                      + ") supera el bono asignado ($" + formato(p.getBono().getMonto()) + ")");
-                return;
-            }
-
-            personas.add(p);
-            mensaje("Guardado: " + p.getTipo() + "\nPersonas registradas: " + personas.size());
-            limpiar();
-        } catch (NumberFormatException ex) {
-            mensaje("Edad, estrato y montos deben ser numéricos");
-        } catch (IllegalArgumentException ex) {
-            mensaje(ex.getMessage());
-        }
-    }
-
-    private Persona construirPersona() {
-        String tipo = (String) cbTipoPersona.getSelectedItem();
-        TipoDocumento td = (TipoDocumento) cbTipoDocumento.getSelectedItem();
-        String doc = txtDocumento.getText().trim();
-        String nombre = txtNombre.getText().trim();
-        String apellido = txtApellido.getText().trim();
-        String direccion = txtDireccion.getText().trim();
-        String telefono = txtTelefono.getText().trim();
-        String estadoCivil = txtEstadoCivil.getText().trim();
-
-        if (td == null || tipo == null || doc.isEmpty() || nombre.isEmpty() || apellido.isEmpty()
-                || direccion.isEmpty() || telefono.isEmpty() || estadoCivil.isEmpty()) {
-            mensaje("Complete todos los datos básicos y seleccione el tipo");
-            return null;
-        }
-
-        int edad = Integer.parseInt(txtEdad.getText().trim());
-        int estrato = Integer.parseInt(txtEstrato.getText().trim());
-
-        if (edad < 0 || edad > 120) {
-            mensaje("Edad no válida");
-            return null;
-        }
-        if (estrato < 1 || estrato > 6) {
-            mensaje("El estrato debe estar entre 1 y 6");
-            return null;
-        }
-        if (buscar(doc) != null) {
-            mensaje("Ya existe una persona con ese documento");
-            return null;
-        }
-
-        boolean cabeza = chkCabezaHogar.isSelected();
-
-        if (tipo.equals("Salud")) {
-            String inst = txtInstitucion.getText().trim();
-            String esp = txtEspecialidad.getText().trim();
-            if (inst.isEmpty() || esp.isEmpty()) {
-                mensaje("Ingrese institución y especialidad");
-                return null;
-            }
-            return new ProfesionalSalud(td, doc, nombre, apellido, direccion, telefono, edad,
-                    estadoCivil, estrato, cabeza, inst, esp,
-                    new ElementoBioseguridad(monto(txtElementoBioseguridad)),
-                    new Medicina(monto(txtMedicinaSalud)));
-        }
-
-        if (tipo.equals("Docente")) {
-            String inst = txtInstitucion.getText().trim();
-            String nivel = (String) cbNivel.getSelectedItem();
-            if (inst.isEmpty() || nivel == null) {
-                mensaje("Ingrese institución y nivel educativo");
-                return null;
-            }
-            return new Docente(td, doc, nombre, apellido, direccion, telefono, edad,
-                    estadoCivil, estrato, cabeza, inst, nivel,
-                    new ImplementoTecnologico(monto(txtImplementosTecnologicos)),
-                    new Servicio(monto(txtInternetEnergia)));
-        }
-
-        if (estrato > 2) {
-            mensaje("La persona independiente debe ser de estrato 1 o 2");
-            return null;
-        }
-        return new Ciudadano(td, doc, nombre, apellido, direccion, telefono, edad,
-                estadoCivil, estrato, cabeza,
-                new Medicina(monto(txtMedicinaIndependiente)),
-                new CanastaFamiliar(monto(txtCanastaFamiliar)));
-    }
-
-    private void buscarYMostrar() {
-        String doc = txtDocumento.getText().trim();
-        if (doc.isEmpty()) {
-            mensaje("Ingrese el número de documento a buscar");
-            return;
-        }
-
-        Persona p = buscar(doc);
-        if (p == null) {
-            mensaje("No se encontró ninguna persona con documento " + doc);
-            return;
-        }
-
-        String tipo = "Independiente";
-        if (p instanceof ProfesionalSalud) tipo = "Salud";
-        else if (p instanceof Docente) tipo = "Docente";
-
-        cbTipoPersona.setSelectedItem(tipo);
-        cbTipoDocumento.setSelectedItem(p.getTipoDocumento());
-        txtDocumento.setText(p.getNumDocumento());
-        txtNombre.setText(p.getNombre());
-        txtApellido.setText(p.getApellido());
-        txtDireccion.setText(p.getDireccion());
-        txtTelefono.setText(p.getTelefono());
-        txtEdad.setText(String.valueOf(p.getEdad()));
-        txtEstrato.setText(String.valueOf(p.getEstrato()));
-        txtEstadoCivil.setText(p.getEstadoCivil());
-        chkCabezaHogar.setSelected(p.getCabezaHogar());
-
-        if (p instanceof ProfesionalSalud) {
-            ProfesionalSalud ps = (ProfesionalSalud) p;
-            txtInstitucion.setText(ps.getInstSalud());
-            txtEspecialidad.setText(ps.getEspecialidad());
-            txtElementoBioseguridad.setText(formato(ps.getElemento().getMonto()));
-            txtMedicinaSalud.setText(formato(ps.getMedicina().getMonto()));
-        } else if (p instanceof Docente) {
-            Docente d = (Docente) p;
-            txtInstitucion.setText(d.getInstEducativa());
-            cbNivel.setSelectedItem(d.getNivelEducativo());
-            txtImplementosTecnologicos.setText(formato(d.getImplemento().getMonto()));
-            txtInternetEnergia.setText(formato(d.getServicio().getMonto()));
-        } else {
-            Ciudadano c = (Ciudadano) p;
-            txtMedicinaIndependiente.setText(formato(c.getMedicina().getMonto()));
-            txtCanastaFamiliar.setText(formato(c.getCanasta().getMonto()));
-        }
-
-        mensaje(p.toString());
-    }
-
-    private double monto(JTextField campo) {
-        String texto = campo.getText().trim();
-        if (texto.isEmpty()) return 0;
-        double valor = Double.parseDouble(texto);
-        if (valor < 0) {
-            throw new IllegalArgumentException("Los montos no pueden ser negativos");
-        }
-        return valor;
-    }
-
-    private String formato(double valor) {
-        if (valor == (long) valor) return String.valueOf((long) valor);
-        return String.valueOf(valor);
-    }
-
-    private void mensaje(String texto) {
-        JOptionPane.showMessageDialog(this, texto);
-    }
+    public JComboBox<TipoDocumento> getCbTipoDocumento() { return cbTipoDocumento; }
+    public JTextField getTxtDocumento() { return txtDocumento; }
+    public JTextField getTxtNombre() { return txtNombre; }
+    public JTextField getTxtApellido() { return txtApellido; }
+    public JTextField getTxtDireccion() { return txtDireccion; }
+    public JTextField getTxtTelefono() { return txtTelefono; }
+    public JTextField getTxtEdad() { return txtEdad; }
+    public JTextField getTxtEstrato() { return txtEstrato; }
+    public JTextField getTxtEstadoCivil() { return txtEstadoCivil; }
+    public JComboBox<String> getCbTipoPersona() { return cbTipoPersona; }
+    public JTextField getTxtInstitucion() { return txtInstitucion; }
+    public JTextField getTxtEspecialidad() { return txtEspecialidad; }
+    public JComboBox<String> getCbNivel() { return cbNivel; }
+    public JCheckBox getChkCabezaHogar() { return chkCabezaHogar; }
+    public JButton getBtnGuardar() { return btnGuardar; }
+    public JButton getBtnLimpiar() { return btnLimpiar; }
+    public JButton getBtnBuscar() { return btnBuscar; }
+    public JPanel getPanelSalud() { return panelSalud; }
+    public JTextField getTxtElementoBioseguridad() { return txtElementoBioseguridad; }
+    public JTextField getTxtMedicinaSalud() { return txtMedicinaSalud; }
+    public JPanel getPanelDocente() { return panelDocente; }
+    public JTextField getTxtImplementosTecnologicos() { return txtImplementosTecnologicos; }
+    public JTextField getTxtInternetEnergia() { return txtInternetEnergia; }
+    public JPanel getPanelIndependiente() { return panelIndependiente; }
+    public JTextField getTxtMedicinaIndependiente() { return txtMedicinaIndependiente; }
+    public JTextField getTxtCanastaFamiliar() { return txtCanastaFamiliar; }
+    public JTextArea getCampoTexto() { return campoTexto; }
 }
