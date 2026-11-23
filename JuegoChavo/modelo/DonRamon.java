@@ -3,25 +3,18 @@ package modelo;
 public class DonRamon extends Personaje
 {
     public DonRamon(){
-        super("Don Ramón", 45, "Perezoso pero simpático", "Vecino endeudado");
+        super("Don Ramón", 45, "Flojo pero buena gente", "Inquilino que debe la renta");
+        agregarDialogo("¿Qué pasó, qué pasó? ¡Vamos!");
+        agregarDialogo("No te doy otra nomás porque...");
     }
 
-    public DonRamon(String nombre, Integer edad, String personalidad, String rol){
-        super(nombre, edad, personalidad, rol);
-    }
-
-    public String evadirCobroRenta(){
-        return nombre + " evade el cobro de la renta del Señor Barriga";
-    }
-
-    public String accionEspecial(){
-        return evadirCobroRenta();
-    }
-
-    public String interactuarCon(Personaje otro){
-        if(otro instanceof Florinda){
-            return nombre + " se esconde de " + otro.getNombre() + " para evitar una bofetada";
+    public String accionCon(Personaje otro){
+        if(otro instanceof SenorBarriga){
+            return "se esconde de " + otro.getNombre() + " para no pagar la renta";
         }
-        return super.interactuarCon(otro);
+        else if(otro instanceof DonaFlorinda){
+            return "trata de explicarle un malentendido a " + otro.getNombre();
+        }
+        return "le pide un favor a " + otro.getNombre();
     }
-}
+}//End class

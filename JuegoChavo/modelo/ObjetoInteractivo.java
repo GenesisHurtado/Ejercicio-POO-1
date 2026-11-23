@@ -2,26 +2,49 @@ package modelo;
 
 public class ObjetoInteractivo
 {
-    protected String nombre;
-    protected String descripcion;
+    private String nombre;
+    private String descripcion;
+    private String accion;
+    private int vecesUsado;
 
-    public ObjetoInteractivo(String nombre, String descripcion){
+    public ObjetoInteractivo(String nombre, String descripcion, String accion){
         this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.accion = accion;
+        this.vecesUsado = 0;
+    }
+
+    // Lo que pasa cuando el jugador interactua con el objeto
+    public String usar(){
+        vecesUsado++;
+        return accion;
+    }
+
+    public String getNombre(){
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion(){
+        return this.descripcion;
+    }
+
+    public void setDescripcion(String descripcion){
         this.descripcion = descripcion;
     }
 
-    public String getNombre(){ return nombre; }
-    public void setNombre(String nombre){ this.nombre = nombre; }
-
-    public String getDescripcion(){ return descripcion; }
-    public void setDescripcion(String descripcion){ this.descripcion = descripcion; }
-
-    // Lo que ocurre cuando un personaje usa el objeto
-    public String usar(Personaje personaje){
-        return personaje.getNombre() + " usa el objeto: " + nombre;
+    public String getAccion(){
+        return this.accion;
     }
 
-    public String toString(){
-        return nombre;
+    public void setAccion(String accion){
+        this.accion = accion;
     }
-}
+
+    public int getVecesUsado(){
+        return this.vecesUsado;
+    }
+}//End class

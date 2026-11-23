@@ -3,24 +3,19 @@ package modelo;
 public class Chavo extends Personaje
 {
     public Chavo(){
-        super("El Chavo", 8, "Inocente y travieso", "Protagonista");
+        super("El Chavo", 8, "Inocente y siempre con hambre", "Vive en el barril");
+        agregarDialogo("¡Eso, eso, eso!");
+        agregarDialogo("Fue sin querer queriendo");
+        agregarDialogo("Se me chispoteó");
     }
 
-    public String pedirTortaJamon(){
-        return nombre + " pide una torta de jamón";
-    }
-
-    public String accionEspecial(){
-        return pedirTortaJamon();
-    }
-
-    public String interactuarCon(Personaje otro){
-        if(otro instanceof Florinda){
-            return nombre + " le pide una torta de jamón a " + otro.getNombre();
+    public String accionCon(Personaje otro){
+        if(otro instanceof DonaFlorinda){
+            return "le pide una torta de jamón a " + otro.getNombre();
         }
-        if(otro instanceof Quico){
-            return nombre + " juega con su amigo " + otro.getNombre();
+        else if(otro instanceof Quico){
+            return "invita a " + otro.getNombre() + " a jugar con la pelota";
         }
-        return super.interactuarCon(otro);
+        return "juega en el patio con " + otro.getNombre();
     }
-}
+}//End class

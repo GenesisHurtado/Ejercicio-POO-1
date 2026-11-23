@@ -3,21 +3,16 @@ package modelo;
 public class Quico extends Personaje
 {
     public Quico(){
-        super("Quico", 9, "Engreído y consentido", "Vecino");
+        super("Quico", 9, "Presumido y llorón", "Hijo de Doña Florinda");
+        agregarDialogo("¡Cállate, cállate, que me desesperas!");
+        agregarDialogo("¡Chusma, chusma!");
+        agregarDialogo("No me simpatizas");
     }
 
-    public String llorar(){
-        return nombre + " empieza a llorar";
-    }
-
-    public String accionEspecial(){
-        return llorar();
-    }
-
-    public String interactuarCon(Personaje otro){
+    public String accionCon(Personaje otro){
         if(otro instanceof Chavo){
-            return nombre + " presume sus juguetes ante " + otro.getNombre();
+            return "le presume su pelota nueva a " + otro.getNombre();
         }
-        return super.interactuarCon(otro);
+        return "le muestra sus juguetes a " + otro.getNombre();
     }
-}
+}//End class
