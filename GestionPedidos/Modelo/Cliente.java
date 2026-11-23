@@ -1,12 +1,20 @@
 package Modelo;
 
-
-/**
- * Write a description of class Cliente here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Cliente
 {
+    private String cedula;
+    private String nombre;
+
+    public Cliente(String cedula, String nombre){
+        this.cedula = cedula;
+        this.nombre = nombre;
+    }
+
+    public String getCedula(){
+        return cedula;
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
 }
